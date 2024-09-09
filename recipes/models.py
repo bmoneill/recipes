@@ -1,19 +1,32 @@
 from django.db import models
+from django.conf import settings
 
 class Recipe(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=2000)
 
+    def __str__(self):
+        return str(self.name)
+
 class Ingredient(models.Model):
     name = models.CharField(max_length=100)
 
-class RecipeIngredient(models.Model):
-    recipe = models.ManyToManyField(Recipe)
-    ingredient = models.ManyToManyField(Ingredient)
+    def __str__(self):
+        return str(self.name)
 
-class User(models.Model):
-    name = models.CharField(max_length = 50)
+class RecipeIngredient(models.Model):
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.recipe.name + ": " + self.ingredient.name)
 
 class UserIngredient(models.Model):
-    user = models.ManyToManyField(User)
-    ingredient = models.ManyToManyField(Ingredient)
+    """
+    TODO
+    """
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.user.username + ": " + self.ingredient.name)
