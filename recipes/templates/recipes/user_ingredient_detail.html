@@ -1,0 +1,8 @@
+{% load static %}
+
+<h1>Available Ingredients</h1>
+<ul>
+    {% for question in latest_question_list %}
+        <li><a href="/ingredients/{{ ingredient.id }}/">{{ ingredient.name }}</a></li>
+    {% endfor %}
+</ul>
