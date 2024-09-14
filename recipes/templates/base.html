@@ -1,6 +1,12 @@
 {% load static %}
 
-<form action="{% url 'logout' %}" method="post">
-  {% csrf_token %}
-  <button type="submit">Log Out</button>
-</form>
+<html>
+    {% block header %}
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'recipes/style.css' %}">
+    </head>
+    <body>
+        {% block content %} {% endblock %}
+    </body>
+    {% endblock %}
+</html>
