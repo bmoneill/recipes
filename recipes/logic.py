@@ -1,12 +1,6 @@
-"""
-TODO
-"""
-from .models import Recipe, UserIngredient, RecipeIngredient
+from .models import Recipe
 
 def available_recipes(user):
-    """
-    TODO
-    """
     recipes = []
     for recipe in Recipe.objects.iterator():
         if recipe.user_can_make(user):
