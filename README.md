@@ -1,6 +1,7 @@
 # Recipe site
 
-A recipe site that recommends recipes based on your preferences and what you have in your kitchen.
+An easy-to-navigate, clutter-free recipe site that recommends recipes based on
+your preferences and what you have in your kitchen.
 
 ## Features (Bold are implemented)
 
@@ -9,6 +10,8 @@ A recipe site that recommends recipes based on your preferences and what you hav
 * Users can filter recipes by time needed
 * Users can filter recipes by price range
 * Recipes have images attached
+* Recipes have tags
+* Recipes have time needed field
 * Ingredients have price ranges attached
 * Users can create their own recipes
 * Users can favorite recipes
