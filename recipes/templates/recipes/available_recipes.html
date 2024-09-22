@@ -4,10 +4,11 @@
     <div class="content"></div>
 
     {%if user.is_authenticated %}
-        <h1>Cooking Site</h1>
         <ul>
-            <li><a href="/available_recipes.html">Available recipes</a></li>
-            <li><a href="/available_ingredients.html">Available ingredients</a></li>
+            <h1>Available recipes for {{ username }}</h1>
+            {% for recipe in recipes %}
+                <li><a href="/recipes/{{ recipe.id }}/">{{ recipe.name }}</a></li>
+            {% endfor %}
         </ul>
     {% else %}
         <p>You must be logged in to view this page.</p>
