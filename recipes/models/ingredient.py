@@ -1,5 +1,4 @@
 from django.db import models
-from .recipe import Recipe
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=100)
@@ -8,8 +7,8 @@ class Ingredient(models.Model):
         recipes = []
         for recipe in Recipe.objects.iterator():
             if recipe.user_can_make(user):
-                for recipe_ingredient in RecipeIngredient.objects.filter(recipe=recipe):
-                    if recipe_ingredient.ingredient.id == self.id:
+                for ri in RecipeIngredient.objects.filter(recipe=recipe):
+                    if ri.ingredient.id == self.id:
                         recipes.append(recipe)
         return recipes
 

@@ -1,13 +1,14 @@
 from django.db import models
 from .recipe_ingredient import RecipeIngredient
+from .user_ingredient import UserIngredient
 
 class Recipe(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=2000)
 
     def user_can_make(self, user):
-        for recipe_ingredient in RecipeIngredient.objects.filter(recipe=self):
-            ingredient = recipe_ingredient.ingredient
+        for ri in RecipeIngredient.objects.filter(recipe=self):
+            ingredient = ri.ingredient
             if not UserIngredient.objects.filter(user=user, ingredient=ingredient).exists():
                 return False
         return True
