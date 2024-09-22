@@ -1,0 +1,1 @@
+from .model_tests.ingredient_tests import IngredientTestCase

@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 from .models import Recipe, Ingredient
-from .logic import available_recipes
+from .app import available_recipes
 
 def index(request):
     context = {

@@ -1,8 +1,6 @@
 from django.test import TestCase
-from .models import *
+from recipes.models import Ingredient, Recipe, RecipeIngredient, UserIngredient
 from django.contrib.auth.models import User
-
-# Create your tests here.
 
 class IngredientTestCase(TestCase):
     def setUp(self):
