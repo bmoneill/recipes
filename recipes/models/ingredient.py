@@ -1,16 +1,18 @@
 from django.db import models
+import recipes.models.recipe
+import recipes.models.recipe_ingredient
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=100)
 
     def user_can_make(self, user):
-        recipes = []
-        for recipe in Recipe.objects.iterator():
+        r = []
+        for recipe in recipes.models.recipe.Recipe.objects.iterator():
             if recipe.user_can_make(user):
-                for ri in RecipeIngredient.objects.filter(recipe=recipe):
+                for ri in recipes.models.recipe_ingredient.RecipeIngredient.objects.filter(recipe=recipe):
                     if ri.ingredient.id == self.id:
-                        recipes.append(recipe)
-        return recipes
+                        r.append(recipe)
+        return r
 
     def __str__(self):
         return str(self.name)

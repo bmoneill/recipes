@@ -1,5 +1,5 @@
 from django.test import TestCase
-from recipes.models import Ingredient, Recipe, RecipeIngredient, UserIngredient
+from recipes.models import *
 from django.contrib.auth.models import User
 
 class IngredientTestCase(TestCase):
