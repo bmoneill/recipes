@@ -18,3 +18,12 @@ your preferences and what you have in your kitchen.
 * Users can modify and save existing recipes
 * Users can create their own accounts with email verification
 * Users can easily add ingredients in their kitchen
+
+## Bugs
+
+If you find a bug, submit an issue, PR, or email me with a description and/or patch.
+
+## License
+
+Copyright (c) 2024-2025 Ben O'Neill <ben@oneill.sh>. This work is released under the
+terms of the MIT License. See [LICENSE](LICENSE) for the license terms.
