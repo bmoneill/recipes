@@ -8,27 +8,27 @@ class Recipe(models.Model):
     description = models.CharField(max_length=2000)
 
     def user_can_make(self, user):
-        for ri in RecipeIngredient.objects.filter(recipe=self):
-            ingredient = ri.ingredient
-            if not UserIngredient.objects.filter(user=user, ingredient=ingredient).exists():
-                return False
-        return True
+        missing = RecipeIngredient.objects.filter(
+            recipe=self
+        ).exclude(
+            ingredient__in=UserIngredient.objects.filter(user=user)
+                .values('ingredient')
+        )
+        return not missing.exists()
     
     def user_can_almost_make(self, user, quota):
         for ri in RecipeIngredient.objects.filter(recipe=self):
             ingredient = ri.ingredient
             if not UserIngredient.objects.filter(user=user, ingredient=ingredient).exists():
                 quota -= 1
-                if quota == 0:
+                if quota < 0:
                     return False
-        return quota != 0
+        return quota >= 0
     
     def __str__(self):
         return str(self.name)
 
     def __eq__(self, other):
-        if other == None:
-            return False
         return self.id == other
 
     def __lt__(self, other):

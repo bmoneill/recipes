@@ -1,19 +1,18 @@
 from django.db import models
-import recipes.models.recipe
-import recipes.models.recipe_ingredient
+from recipes.models.recipe import Recipe
+from recipes.models.recipe_ingredient import RecipeIngredient
 
 class Ingredient(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
 
     def user_can_make(self, user):
-        r = []
-        for recipe in recipes.models.recipe.Recipe.objects.iterator():
-            if recipe.user_can_make(user):
-                for ri in recipes.models.recipe_ingredient.RecipeIngredient.objects.filter(recipe=recipe):
-                    if ri.ingredient.id == self.id:
-                        r.append(recipe)
-        return r
+        return [
+            recipe
+            for recipe in Recipe.objects.iterator()
+            if recipe.user_can_make(user)
+            and RecipeIngredient.objects.filter(recipe=recipe, ingredient=self).exists()
+        ]
 
     def __str__(self):
         return str(self.name)

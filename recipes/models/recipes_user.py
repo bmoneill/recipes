@@ -14,29 +14,28 @@ class RecipesUser(AbstractUser):
     REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
 
     def available_recipes(self):
-        recipes = []
-        for recipe in Recipe.objects.iterator():
-            if recipe.user_can_make(self):
-                recipes.append(recipe)
-        return recipes
+        return [
+            recipe
+            for recipe in Recipe.objects.iterator()
+            if recipe.user_can_make(self)
+        ]
     
     def has_ingredient(self, ingredient):
-        return UserIngredient.objects.filter(ingredient=ingredient)
+        return UserIngredient.objects.filter(ingredient=ingredient).exists()
     
     def num_missing_ingredients(self, recipe):
-        missing = 0
-        for ri in RecipeIngredient.objects.iterator():
-            if not self.has_ingredient(ri.ingredient):
-                missing += 1
-        return missing
+        return sum(
+            1 for ri in RecipeIngredient.objects.filter(recipe=recipe)
+            if not self.has_ingredient(ri.ingredient)
+        )
 
 
     def unavailable_recipes(self):
-        recipes = []
-        for recipe in Recipe.objects.iterator():
-            if not recipe.user_can_make(self):
-                recipes.append((recipe, self.num_missing_ingredients(recipe)))
-        return recipes
+        return [
+            (recipe, self.num_missing_ingredients(recipe))
+            for recipe in Recipe.objects.iterator()
+            if not recipe.user_can_make(self)
+        ]
 
     def __str__(self):
         return "{}".format(self.email)
