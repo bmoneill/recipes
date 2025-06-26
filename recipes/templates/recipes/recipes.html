@@ -4,10 +4,16 @@
     <div class="content"></div>
 
     {%if user.is_authenticated %}
+        <h1>You have all the ingredients you need to make these recipes:</h1>
         <ul>
-            <h1>Available recipes for {{ username }}</h1>
             {% for recipe in recipes %}
                 <li><a href="/recipes/{{ recipe.id }}/">{{ recipe.name }}</a></li>
+            {% endfor %}
+        </ul>
+        <h1>You are missing some ingredients needed to make these recipes:</h1>
+        <ul>
+            {% for recipe in unavailable_recipes %}
+                <li>Missing {{ recipe.1 }} ingredients: <a href="/recipes/{{ recipe.0.id }}/">{{ recipe.0.name }}</a></li>
             {% endfor %}
         </ul>
     {% else %}

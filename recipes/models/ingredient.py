@@ -3,6 +3,7 @@ import recipes.models.recipe
 import recipes.models.recipe_ingredient
 
 class Ingredient(models.Model):
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
 
     def user_can_make(self, user):
@@ -18,7 +19,9 @@ class Ingredient(models.Model):
         return str(self.name)
 
     def __eq__(self, other):
-        return self.id == other.id
+        if other == None:
+            return False
+        return self.id == other
 
     def __lt__(self, other):
         return self.id < other.id

@@ -8,5 +8,5 @@ from django.urls import include, path
 urlpatterns = [
     path("recipes/", include("recipes.urls")),
     path("admin/", admin.site.urls),
-    path("accounts/", include("django.contrib.auth.urls"))
+    path("auth/", include("django.contrib.auth.urls"))
 ]

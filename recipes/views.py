@@ -1,10 +1,9 @@
 from django.shortcuts import get_object_or_404, render
 from .models import Recipe, Ingredient, UserIngredient
-from .app import available_recipes
 
 def index(request):
     context = {
-        "recipes": available_recipes(request.user),
+        "recipes": request.user.available_recipes(),
         "username": request.user.username
     }
     return render(request, "recipes/index.html", context)
@@ -18,7 +17,8 @@ def ingredients_view(request):
 
 def recipes_view(request):
     context = {
-        "recipes": available_recipes(request.user),
+        "recipes": request.user.available_recipes(),
+        "unavailable_recipes": request.user.unavailable_recipes(),
         "username": request.user.username
     }
     return render(request, "recipes/recipes.html", context)
