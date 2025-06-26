@@ -1,5 +1,7 @@
 # Recipe site
 
+![Build Status](https://img.shields.io/github/actions/workflow/status/boneill02/recipes/django.yml?branch=master)
+
 An easy-to-navigate, clutter-free recipe site that recommends recipes based on
 your preferences and what you have in your kitchen.
 
