@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, render
-from .models import Recipe, Ingredient
+from .models import Recipe, Ingredient, UserIngredient
 from .app import available_recipes
 
 def index(request):
@@ -9,13 +9,19 @@ def index(request):
     }
     return render(request, "recipes/index.html", context)
 
+def ingredients_view(request):
+    context = {
+        "ingredients": UserIngredient.objects.filter(user=request.user),
+        "username": request.user.username
+    }
+    return render(request, "recipes/ingredients.html", context)
 
-def available_recipes_view(request):
+def recipes_view(request):
     context = {
         "recipes": available_recipes(request.user),
         "username": request.user.username
     }
-    return render(request, "recipes/available_recipes.html", context)
+    return render(request, "recipes/recipes.html", context)
 
 def available_recipes_with_ingredient_view(request, ingredient_id):
     """
