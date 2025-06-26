@@ -3,10 +3,10 @@ from recipes.models.recipe import Recipe
 from recipes.models.recipe_ingredient import RecipeIngredient
 
 class Ingredient(models.Model):
-    id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100)
+    id = models.AutoField(primary_key=True, null=False)
+    name = models.CharField(max_length=100, null=False)
 
-    def user_can_make(self, user):
+    def user_can_make(self, user) -> list[Recipe]:
         return [
             recipe
             for recipe in Recipe.objects.iterator()
@@ -15,7 +15,7 @@ class Ingredient(models.Model):
         ]
 
     def __str__(self):
-        return str(self.name)
+        return self.name
 
     def __eq__(self, other):
         if other == None:

@@ -7,7 +7,7 @@ class UserIngredient(models.Model):
     ingredient = models.ForeignKey('recipes.Ingredient', on_delete=models.CASCADE, null=False)
 
     def __str__(self):
-        return str(self.user.username + ": " + self.ingredient.name)
+        return f"{self.user.username}: {self.ingredient.name}"
 
     def __eq__(self, other):
         return self.id == other.id

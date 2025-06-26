@@ -19,10 +19,10 @@ class RecipesUser(AbstractUser):
             for recipe in Recipe.objects.iterator()
             if recipe.user_can_make(self)
         ]
-    
+
     def has_ingredient(self, ingredient):
         return UserIngredient.objects.filter(ingredient=ingredient).exists()
-    
+
     def num_missing_ingredients(self, recipe):
         return sum(
             1 for ri in RecipeIngredient.objects.filter(recipe=recipe)
@@ -38,4 +38,4 @@ class RecipesUser(AbstractUser):
         ]
 
     def __str__(self):
-        return "{}".format(self.email)
+        return f"{self.email}"
