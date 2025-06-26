@@ -1,6 +1,7 @@
 # Recipe site
 
-![Build Status](https://img.shields.io/github/actions/workflow/status/boneill02/recipes/django.yml?branch=master)
+[![Build Status](https://github.com/boneill02/recipes/actions/workflows/django.yml/badge.svg?branch=master)](https://github.com/boneill02/recipes/actions/workflows/django.yml).
+[![PyLint Status](https://github.com/boneill02/recipes/actions/workflows/pylint.yml/badge.svg?branch=master)](https://github.com/boneill02/recipes/actions/workflows/pylint.yml).
 
 An easy-to-navigate, clutter-free recipe site that recommends recipes based on
 your preferences and what you have in your kitchen.
