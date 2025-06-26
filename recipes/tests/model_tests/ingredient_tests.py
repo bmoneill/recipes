@@ -1,6 +1,5 @@
 from django.test import TestCase
 from recipes.models import *
-from django.contrib.auth.models import User
 
 class IngredientTestCase(TestCase):
     def setUp(self):
@@ -29,7 +28,7 @@ class IngredientTestCase(TestCase):
         RecipeIngredient.objects.create(recipe=self.turkey_sandwich, ingredient=self.bread)
         RecipeIngredient.objects.create(recipe=self.turkey_sandwich, ingredient=self.turkey)
 
-        self.user = User.objects.create()
+        self.user = RecipesUser.objects.create()
         UserIngredient.objects.create(user=self.user, ingredient=self.bread)
         UserIngredient.objects.create(user=self.user, ingredient=self.ham)
         UserIngredient.objects.create(user=self.user, ingredient=self.turkey)
