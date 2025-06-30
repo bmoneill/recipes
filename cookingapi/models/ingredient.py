@@ -7,8 +7,6 @@ recipe matching and suggestions.
 """
 
 from django.db import models
-from . import Recipe
-from . import RecipeIngredient
 
 class Ingredient(models.Model):
     """Model representing an ingredient used in recipes."""
@@ -16,8 +14,10 @@ class Ingredient(models.Model):
     id = models.AutoField(primary_key=True, null=False)
     name = models.CharField(max_length=100, null=False)
 
-    def user_can_make(self, user) -> list[Recipe]:
+    def user_can_make(self, user):
         """ Check what recipes the user can make that contain this ingredient. """
+        from . import Recipe
+        from . import RecipeIngredient
 
         return [
             recipe
