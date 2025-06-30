@@ -18,6 +18,7 @@ class Ingredient(models.Model):
 
     def user_can_make(self, user) -> list[Recipe]:
         """ Check what recipes the user can make that contain this ingredient. """
+
         return [
             recipe
             for recipe in Recipe.objects.iterator()
