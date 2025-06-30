@@ -3,8 +3,12 @@
 {% block content %}
     <h1>Available Ingredients</h1>
     <ul>
-        {% for ingredient in ingredients %}
-            <li><a href="/ingredients/{{ ingredient.id }}/">{{ ingredient.name }}</a></li>
-        {% endfor %}
+        {%if user.is_authenticated %}
+            {% for ingredient in ingredients %}
+                <li><a href="/ingredients/{{ ingredient.id }}/">{{ ingredient.name }}</a></li>
+            {% endfor %}
+        {% else %}
+            <p>You must be logged in to view this page.</p>
+        {%endif%}
     </ul>
 {% endblock %}
