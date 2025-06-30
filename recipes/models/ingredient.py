@@ -11,6 +11,8 @@ from recipes.models.recipe import Recipe
 from recipes.models.recipe_ingredient import RecipeIngredient
 
 class Ingredient(models.Model):
+    """Model representing an ingredient used in recipes."""
+
     id = models.AutoField(primary_key=True, null=False)
     name = models.CharField(max_length=100, null=False)
 
@@ -24,10 +26,10 @@ class Ingredient(models.Model):
         ]
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
     def __eq__(self, other):
-        if other == None:
+        if other is None:
             return False
         return self.id == other
 
