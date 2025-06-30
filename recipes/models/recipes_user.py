@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django.conf import settings
-from datetime import date
 from .recipe_ingredient import RecipeIngredient
 from .user_ingredient import UserIngredient
 from .recipe import Recipe
