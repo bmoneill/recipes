@@ -12,6 +12,8 @@ fields to provide more accurate pricing information.
 from django.db import models
 
 class Price(models.Model):
+    """Model representing the price of an ingredient in a specific currency."""
+
     CURRENCY = {
         "$": "Dollar",
         "€": "Euro",
