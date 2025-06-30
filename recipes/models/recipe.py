@@ -1,9 +1,17 @@
+"""
+This module defines the Recipe model for the recipes application.
+
+Tags must be added in the future to allow for filtering recipes.
+"""
+
 from django.conf import settings
 from django.db import models
 from .recipe_ingredient import RecipeIngredient
 from .user_ingredient import UserIngredient
 
 class Recipe(models.Model):
+    """Model representing a recipe with its author, description, and time needed to make."""
+
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
@@ -11,9 +19,8 @@ class Recipe(models.Model):
     time = models.TimeField(auto_now=False, auto_now_add=False, null=True)
 
     def user_can_make(self, user) -> bool:
-        """
-        Returns True if user has all Ingredients needed to make this Recipe
-        """
+        """Returns True if user has all Ingredients needed to make this Recipe"""
+
         missing = RecipeIngredient.objects.filter(
             recipe=self
         ).exclude(
@@ -27,6 +34,7 @@ class Recipe(models.Model):
         Returns True if user is missing quota or less Ingredients needed
         to make this Recipe
         """
+
         for ri in RecipeIngredient.objects.filter(recipe=self):
             ingredient = ri.ingredient
             if not UserIngredient.objects.filter(user=user, ingredient=ingredient).exists():
@@ -36,7 +44,7 @@ class Recipe(models.Model):
         return quota >= 0
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
     def __eq__(self, other):
         return self.id == other
