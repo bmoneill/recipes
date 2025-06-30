@@ -16,7 +16,7 @@ class Recipe(models.Model):
     name = models.CharField(max_length=100)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
     description = models.CharField(max_length=2000)
-    time = models.TimeField(auto_now=False, auto_now_add=False, null=True)
+    time = models.DurationField(default=None, null=True)
 
     def user_can_make(self, user) -> bool:
         """Returns True if user has all Ingredients needed to make this Recipe"""
