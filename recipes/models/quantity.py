@@ -1,4 +1,3 @@
-from django.db import models
 """
 This module defines the Quantity model for the recipes application.
 It includes fields for the quantity amount and unit of measurement.
@@ -9,6 +8,8 @@ units.
 Currently, the string representation of the Quantity model does not convert
 units for display in templates, which should be addressed in the future.
 """
+
+from django.db import models
 
 class Quantity(models.Model):
     """Model representing unit and quantity of an ingredient with a specific unit of measurement."""
