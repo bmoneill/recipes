@@ -33,7 +33,6 @@ class Quantity(models.Model):
     amount = models.FloatField(null=False)
 
     def __str__(self):
-        # TODO convert units when using this in templates
         return f"{self.amount}{self.unit}"
 
     def __eq__(self, other):
