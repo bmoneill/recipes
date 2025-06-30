@@ -1,3 +1,11 @@
+"""
+This module defines the Ingredient model for the recipes application.
+
+Future enhancements could include adding fields for ingredient type, allergen
+information, flavor profile, or other characteristics to enable more advanced
+recipe matching and suggestions.
+"""
+
 from django.db import models
 from recipes.models.recipe import Recipe
 from recipes.models.recipe_ingredient import RecipeIngredient
@@ -7,6 +15,7 @@ class Ingredient(models.Model):
     name = models.CharField(max_length=100, null=False)
 
     def user_can_make(self, user) -> list[Recipe]:
+        """ Check what recipes the user can make that contain this ingredient. """
         return [
             recipe
             for recipe in Recipe.objects.iterator()
