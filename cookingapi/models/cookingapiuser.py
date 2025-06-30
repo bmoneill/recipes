@@ -17,7 +17,11 @@ class CookingAPIUser(AbstractUser):
     """Model representing a user in the recipes application."""
     username = models.CharField(max_length = 50, blank = True, null = True, unique = True)
     email = models.EmailField(max_length = 50, unique = True)
-    full_name = models.CharField(max_length = 5)
+    full_name = models.CharField(max_length = 100)
+    ingredients = models.ManyToManyField(
+       'cookingapi.Ingredient',
+        through='cookingapi.UserIngredient', related_name='users'
+    )
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
 

@@ -15,6 +15,11 @@ class Recipe(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
     description = models.CharField(max_length=2000)
     time = models.DurationField(default=None, null=True)
+    ingredients = models.ManyToManyField(
+        'cookingapi.Ingredient',
+        through='cookingapi.RecipeIngredient',
+        related_name='recipes'
+    )
 
     def user_can_make(self, user) -> bool:
         """Returns True if user has all Ingredients needed to make this Recipe"""
@@ -33,7 +38,7 @@ class Recipe(models.Model):
         to make this Recipe
         """
 
-        for ri in RecipeIngredient.objects.filter(recipe=self):
+        for ri in self.ingredients.all():
             ingredient = ri.ingredient
             if not UserIngredient.objects.filter(user=user, ingredient=ingredient).exists():
                 quota -= 1
