@@ -1,3 +1,14 @@
+"""
+This module defines the Price model for the recipes application.
+It includes fields for the price amount, currency unit, and a foreign key to the
+associated Ingredient model.
+
+This model does not currently take into account differing prices based on
+regions, retailers, or other factors, so at the moment it is essentially just a
+rough estimate. Future enhancements could include adding region and retailer
+fields to provide more accurate pricing information.
+"""
+
 from django.db import models
 
 class Price(models.Model):
