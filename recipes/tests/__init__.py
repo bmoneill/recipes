@@ -1,3 +1,0 @@
-from .model_tests.ingredient_tests import IngredientTestCase
-from .model_tests.recipe_tests import RecipeTestCase
-from .model_tests.recipes_user_tests import RecipesUserTestCase
