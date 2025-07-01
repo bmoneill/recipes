@@ -4,6 +4,10 @@
 [![PyLint Status](https://github.com/boneill02/recipes/actions/workflows/pylint.yml/badge.svg?branch=master)](https://github.com/boneill02/recipes/actions/workflows/pylint.yml)
 [![Bandit Status](https://github.com/boneill02/recipes/actions/workflows/bandit.yml/badge.svg?branch=master)](https://github.com/boneill02/recipes/actions/workflows/bandit.yml)
 
+This is a [Django REST Framework](https://www.django-rest-framework.org/)
+backend for a cooking site that recommends recipes based on what the user
+has in their kitchen.
+
 ## Bugs
 
 If you find a bug, submit an issue, PR, or email me with a description and/or patch.
