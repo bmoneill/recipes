@@ -1,8 +1,8 @@
 # Recipe site backend (WIP)
 
-[![Build Status](https://github.com/boneill02/recipes/actions/workflows/django.yml/badge.svg?branch=master)](https://github.com/boneill02/recipes/actions/workflows/django.yml).
-[![PyLint Status](https://github.com/boneill02/recipes/actions/workflows/pylint.yml/badge.svg?branch=master)](https://github.com/boneill02/recipes/actions/workflows/pylint.yml).
-[![Bandit Status](https://github.com/boneill02/recipes/actions/workflows/bandit.yml/badge.svg?branch=master)](https://github.com/boneill02/recipes/actions/workflows/bandit.yml).
+[![Build Status](https://github.com/boneill02/recipes/actions/workflows/django.yml/badge.svg?branch=master)](https://github.com/boneill02/recipes/actions/workflows/django.yml)
+[![PyLint Status](https://github.com/boneill02/recipes/actions/workflows/pylint.yml/badge.svg?branch=master)](https://github.com/boneill02/recipes/actions/workflows/pylint.yml)
+[![Bandit Status](https://github.com/boneill02/recipes/actions/workflows/bandit.yml/badge.svg?branch=master)](https://github.com/boneill02/recipes/actions/workflows/bandit.yml)
 
 ## Bugs
 
