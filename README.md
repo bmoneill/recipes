@@ -1,8 +1,8 @@
 # Recipe site backend (WIP)
 
-[![Build Status](https://github.com/bmoneill/recipes/actions/workflows/django.yml/badge.svg?branch=master)](https://github.com/bmoneill/recipes/actions/workflows/django.yml)
-[![PyLint Status](https://github.com/bmoneill/recipes/actions/workflows/pylint.yml/badge.svg?branch=master)](https://github.com/bmoneill/recipes/actions/workflows/pylint.yml)
-[![Bandit Status](https://github.com/bmoneill/recipes/actions/workflows/bandit.yml/badge.svg?branch=master)](https://github.com/bmoneill/recipes/actions/workflows/bandit.yml)
+[![Build Status](https://github.com/bmoneill/recipes/actions/workflows/django.yml/badge.svg?branch=main)](https://github.com/bmoneill/recipes/actions/workflows/django.yml)
+[![PyLint Status](https://github.com/bmoneill/recipes/actions/workflows/pylint.yml/badge.svg?branch=main)](https://github.com/bmoneill/recipes/actions/workflows/pylint.yml)
+[![Bandit Status](https://github.com/bmoneill/recipes/actions/workflows/bandit.yml/badge.svg?branch=main)](https://github.com/bmoneill/recipes/actions/workflows/bandit.yml)
 [![Dependabot Active](https://img.shields.io/badge/dependabot-active-brightgreen?style=flat-square&logo=dependabot)](https://github.com/bmoneill/recipes/security/dependabot)
 
 This is a [Django REST Framework](https://www.django-rest-framework.org/)
