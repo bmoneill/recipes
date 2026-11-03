@@ -21,6 +21,6 @@ python-dotenv==1.1.1
 PyYAML==6.0.2
 rich==14.0.0
 setuptools==80.9.0
-sqlparse==0.5.1
+sqlparse==0.6.0
 stevedore==5.4.1
 tomlkit==0.13.2
